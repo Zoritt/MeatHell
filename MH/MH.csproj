@@ -8,6 +8,8 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20191025155134_initmodel.cs" />
     <Compile Remove="Data\Migrations\20191025155134_initmodel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191025160411_Meal_AlterColumn.cs" />
+    <Compile Remove="Data\Migrations\20191025160411_Meal_AlterColumn.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
