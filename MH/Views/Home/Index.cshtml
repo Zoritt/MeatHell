@@ -92,3 +92,25 @@
         </ul>
     </div>
 </div>
+
+
+
+@section scripts 
+{
+    <script>
+        $(document).ready(function () {
+
+
+            function get_fb() {
+                var feedback = $.ajax({
+                    type: "Get",
+                    url: "http://localhost/api/NotifyMonitor",
+                    async: false
+                }).success(function () {
+                    setTimeout(function () { get_fb(); }, 10000);
+                }).responseText;
+
+                console.log(feedback);
+        });
+    </script>
+}
