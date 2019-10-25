@@ -7,8 +7,6 @@ namespace MH.Models
 {
     public class AuditEntity
     {
-        public int Id { get; set; }
-
         public DateTime CreationDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
     }
