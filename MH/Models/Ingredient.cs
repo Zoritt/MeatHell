@@ -10,5 +10,9 @@ namespace MH.Models
         [Required]
         [Column(TypeName ="varchar(200)")]
         public string Name { get; set; }
+
+        public IngredientType IngredientType { get; set; }
+        public int IngredientTypeId { get; set; }
+
     }
 }
