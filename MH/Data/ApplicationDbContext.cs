@@ -13,5 +13,7 @@ namespace MH.Data
             : base(options)
         {
         }
+
+        public DbSet<MH.Models.IngredientType> IngredientType { get; set; }
     }
 }
