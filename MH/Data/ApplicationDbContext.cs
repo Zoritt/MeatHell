@@ -8,6 +8,9 @@ namespace MH.Data
     {
         public DbSet<Meal> Meals { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Notify> Notifys { get;set;}
+
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
