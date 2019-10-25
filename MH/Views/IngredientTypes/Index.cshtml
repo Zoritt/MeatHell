@@ -34,19 +34,24 @@
         }
     </tbody>
 </table>
+
+<button id="butt"class="btn btn-primary">Kliknij</button>
+
+
 @section scripts{
 
 
     <script>
         $(document).ready(function () {
+            $("#butt").on("click", function () {
 
-            debugger;
-
-            $('.toast').toast({
-                animation: false,
-                delay: 2000
+                toastr.success("Rental has been completed");
             });
-            $('.toast').toast('show');
+
+
+            //toastr.success("Rental has been completed");
+            //debugger;
+
         });
     </script>
 }

@@ -54,6 +54,13 @@ namespace MH.Controllers
             return View(ingredientType);
         }
 
+        public void ShowMessage()
+        {
+            _toastNotification.AddInfoToastMessage("test");
+        }
+
+
+
         // GET: IngredientTypes/Create
         public IActionResult Create()
         {
