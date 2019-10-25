@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MH.Data;
 using MH.Models;
+using NToastNotify;
 
 namespace MH.Controllers
 {
@@ -14,14 +15,24 @@ namespace MH.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public IngredientTypesController(ApplicationDbContext context)
+        public IngredientTypesController(ApplicationDbContext context, IToastNotification toastNotification)
         {
             _context = context;
+            _toastNotification = toastNotification;
         }
+        private readonly IToastNotification _toastNotification;
+
+        //public IngredientTypesController(IToastNotification toastNotification)
+        //{
+        //    _toastNotification = toastNotification;
+        //}
+
+
 
         // GET: IngredientTypes
         public async Task<IActionResult> Index()
         {
+            _toastNotification.AddSuccessToastMessage("Same for success message");
             return View(await _context.IngredientType.ToListAsync());
         }
 
@@ -39,7 +50,7 @@ namespace MH.Controllers
             {
                 return NotFound();
             }
-
+            _toastNotification.AddInfoToastMessage(ingredientType.Name);
             return View(ingredientType);
         }
 

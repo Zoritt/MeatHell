@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MH.Models.IngredientType>
-
+@await Component.InvokeAsync("NToastNotify")
 @{
     ViewData["Title"] = "Index";
 }
@@ -34,17 +34,19 @@
         }
     </tbody>
 </table>
-@section scripts{ 
+@section scripts{
 
 
-<script>
-    $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-        $('.toast').toast({
-            animation: false,
-            delay: 2000
+            debugger;
+
+            $('.toast').toast({
+                animation: false,
+                delay: 2000
+            });
+            $('.toast').toast('show');
         });
-        $('.toast').toast('show');
-    }
-</script>
-    }
+    </script>
+}

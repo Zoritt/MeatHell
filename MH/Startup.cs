@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using MH.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NToastNotify;
 
 namespace MH
 {
@@ -40,8 +41,17 @@ namespace MH
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMvc().AddNToastNotifyNoty();
+
           
+        
+
+            //Or Simply go
+            services.AddMvc().AddNToastNotifyNoty();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +73,9 @@ namespace MH
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+
+
+            app.UseNToastNotify();
 
             app.UseMvc(routes =>
             {
