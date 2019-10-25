@@ -15,6 +15,7 @@ namespace MH
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+            //777
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
