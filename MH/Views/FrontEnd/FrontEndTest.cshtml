@@ -3,5 +3,111 @@
     ViewData["Title"] = "FrontEndTest";
 }
 
-<h2>FrontEndTest</h2>
+<h2>Front End Test</h2>
+<hr /> @* linia pozioma *@
+<div>
+    <h3>Buttons:</h3>
+
+    <button>basic</button>
+    <button class="button">button</button>
+    <button class="button btn">btn</button>
+    <button class="button btn btn-block">btn-block </button>
+    <button class="button btn btn-danger">btn-danger </button>
+    <button class="button btn btn-default">btn-default </button>
+    <button class="button btn btn-group">btn-group </button>
+    <button class="button btn btn-group-justified">btn-group-justified </button>
+    <button class="button btn btn-group-lg">btn-group-lg </button>
+    <button class="button btn btn-group-sm">btn-group-sm </button>
+    <button class="button btn btn-group-vertical">group-vertical </button>
+    <button class="button btn btn-group-xs">btn-group-xs </button>
+    <button class="button btn btn-info">btn-info </button>
+    <button class="button btn btn-lg">btn-lg </button>
+    <button class="button btn btn-link">btn-link </button>
+    <button class="button btn btn-primary">btn-primary </button>
+    <button class="button btn btn-sm"> btn-sm </button>
+    <button class="button btn btn-success">btn-success </button>
+    <button class="button btn btn-toolbar">btn-toolbar </button>
+    <button class="button btn btn-warning">btn-warning </button>
+    <button class="button btn btn-xs">btn-xs </button>
+    <button class="button btn input-group-btn">input-group-btn </button>
+    <button class="button btn navbar-btn">navbar-btn </button>
+</div>
+
+<hr />
+@* Events sample *@
+<div>
+    <hr />
+    <h2>Simple button events</h2>
+    <button id="btnEventTest1" class="button btn-default">Event attached via document.ready()</button>
+    <button id="btnEventTest2" class="button btn-danger" onclick="alertRaise()">Event call 2</button>
+</div>
+
+<div>
+    <hr />
+    <h2>Toastr samples</h2>
+    <button id="toastrSample1" class="button btn-default" onclick="toastrSample1()">Toastr 1</button>
+    <button id="toastrSample2" class="button btn-default" onclick="toastrSample2()">Toastr 2</button>
+    <button id="toastrSample3" class="button btn-default" onclick="toastrSample3()">Toastr 3</button>
+    <button id="toastrSample4" class="button btn-default" onclick="toastrSample4()">Toastr 4</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* to section scripts jest obligatoryjne - bez tego kod JS nie dziala z poziomu przegladarki*@
+@section scripts
+    {
+    <script src="~/toastr.js"></script>
+        <script>
+
+            $(document).ready(function () {
+                $("#btnEventTest1").on("click", function () {
+                    alert(1);
+                });
+
+           
+
+
+
+
+
+        });
+
+            function alertRaise() {
+                alert('other function call');
+            }
+
+            function toastrSample1() {
+                toastr.success("This is toastr sample 1 message", "This is Toastr title");
+            };
+
+            function toastrSample2() {
+                toastr.error("This is error toastr", "Error toastr title", { "positionClass": "toast-top-center" });
+                /* Przykladowe positionClass:
+                 * toast-top-full-width
+                  * toast-top-right
+                   * toast-bottom-right
+                    */
+            };
+
+
+
+
+    </script>
+}
+
 

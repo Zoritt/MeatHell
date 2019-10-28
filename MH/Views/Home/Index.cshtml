@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@await Component.InvokeAsync("NToastNotify")
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -95,8 +95,8 @@
 
 
 
-@section scripts 
-{
+@section scripts
+    {
     <script>
         $(document).ready(function () {
 
@@ -104,11 +104,10 @@
                 type: 'GET',
                 url: 'https://localhost:5001/api/NotifyMonitor',
                 dataType: 'text',
-                
+
                 success: function (response) {
                     let json = jQuery.parseJSON(response);
-                    $.each(json, function (index, element)
-                    {
+                    $.each(json, function (index, element) {
                         var msg = element.message;
                         toastr.success(msg);
                     });
@@ -118,9 +117,9 @@
                 }
             });
         });
-        
 
 
-        
+
+
     </script>
 }
