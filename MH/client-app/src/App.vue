@@ -1,36 +1,34 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-app-bar>
-
-    <v-content>
-      <HelloWorld/>
-    </v-content>
-  </v-app>
+  <div id="app">
+    <h4 class="bg-primary text-white text-center p-2">
+      Lista zadań użytkownika {{name}}
+    </h4>
+    <div class="container-fluid p-4">
+      <div class="row">
+        <div class="col font-weight-bold">Zadanie</div>
+        <div class="col-2 font-weight-bold">Zakończono?</div>
+    </div>
+    <div class="row" v-for="t in tasks" v-bind:key="t.action">
+      <div class="col">{{t.action}}</div>
+      <div class="col-2">
+        <input type="checkbox" v-model="t.done" class="form-check-input"/>
+        </div>
+    </div>
+  </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-  },
-  data: () => ({
-    //
-  }),
-};
+  name: 'app',
+  data() {
+    return {
+    name: "Adam",
+    tasks:[{action:"Kup kwiaty", done:false},
+    {action:"Znajdź buty", done:false},
+    {action:"Odbierz bilety", done:true},
+    {action:"Zadzwoń do Janks", done:false}]
+  }
+  }
+}
 </script>
