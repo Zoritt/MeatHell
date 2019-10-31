@@ -2,6 +2,12 @@
   <div id="app">
     <h4 class="bg-primary text-white text-center p-2">Lista zadań użytkownika {{name}}</h4>
     <div class="container-fluid p-4">
+      <div class="row" v-if="filteredTasks.length==0">
+        <div class="col text-center">
+          <b>Nie masz nic do zrobienia. </b>
+        </div>
+      </div>
+        <template v-else>
       <div class="row">
         <div class="col font-weight-bold">Zadanie</div>
         <div class="col-2 font-weight-bold">Zakończono?</div>
@@ -13,6 +19,7 @@
           {{t.done}}
         </div>
       </div>
+        </template>
       <div class="row py-2">
         <div class="col">
           <input v-model="newItemText" class="form-control"/>
@@ -26,6 +33,11 @@
           <input type="checkbox" v-model="hideCompleted" class="form-check-input" />
           <label class="form-checl-label font-weight-body">Ukryj zakończone zadania</label>
         </div>
+        <div class="col text-center">
+          <button class="btn btn-sm btn-warning" v-on:click="deleteCompleted">
+            Usuń zakończone
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -37,12 +49,7 @@ export default {
   data() {
     return {
       name: "Adam",
-      tasks: [
-        { action: "Kup kwiaty", done: false },
-        { action: "Znajdź buty", done: false },
-        { action: "Odbierz bilety", done: true },
-        { action: "Zadzwoń do Janka", done: false }
-      ],
+      tasks: [],
       hideCompleted: true,
       newItemText:"",
     };
@@ -58,8 +65,25 @@ export default {
         action:this.newItemText,
         done:false
       });
+      localStorage.setItem("todos",
+      JSON.stringify(this.tasks));  
+      this.storeData();    
       this.newItemText = "";
+    },
+    storeData(){
+      localStorage.setItem("todos",
+      JSON.stringify(this.tasks));
+    },
+    deleteCompleted(){
+      this.tasks=this.tasks.filter(t=>!t.done);
+      this.storeData();      
     }
-  } 
+  },
+  created() {
+    let data = localStorage.getItem("todos");
+    if(data !=null) {
+      this.tasks = JSON.parse(data)
+    }
+  }
 };
 </script>
