@@ -3,16 +3,26 @@
     <h4 class="bg-primary text-white text-center p-2">
       Lista zadań użytkownika Adam
     </h4>
-    <div class="container-fluid p-4">
-      <div class="row">
-        <div class="col font-weight-bold">Zadanie</div>
-        <div class="col-2 font-weight-bold">Zakończono?</div>
-    </div>
-    <div class="row" v-for="t in tasks" v-bind:key="t.action">
-      <div class="col">{{t.action}}</div>
-      <div class="col-2">{{t.done}}</div>
-        </div>
-    </div>
+<table class="table table-striped table-bordered table-sm">
+  <thead>
+    <tr><th>Zadanie</th><th>Czy wykonano?</th></tr>
+  </thead>
+  <tbody>    
+    
+    <tr v-for="t in tasks" v-bind:key="t.action">
+      <td>{{t.action}}</td>
+      <td>{{t.done}}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="form-group m-2">
+  <label>Nowy element:</label>
+  <input v-model="newItemText" class="form-control"/>
+</div>
+<div class="text-center">
+  <button class="btn btn-primary" v-on:click="addNewTodo">Dodaj
+  </button>
+</div>
   </div>
 </template>
 
@@ -23,7 +33,17 @@ export default {
       tasks:[{action:"Kup kwiaty", done:false},
     {action:"Znajdź buty", done:false},
     {action:"Odbierz bilety", done:true},
-    {action:"Zadzwoń do Janks", done:false}]
+    {action:"Zadzwoń do Janks", done:false}],
+    newItemText:""
+    }
+  },
+  methods:{
+    addNewTodo(){
+      this.tasks.push({
+        action:this.newItemText,
+        done:false
+      });
+      this.newItemText="";
     }
   }
 }
