@@ -1,9 +1,5 @@
-function myFunc(nameFunction){
-  return ("Cześć, " + nameFunction() + "!")
-  }
-  
-  function printName(nameFunction, printFunction){
-    printFunction(myFunc(nameFunction));
-  }
-
-  printName(function(){return "Adam"},console.log)
+function messageFunction(weather){        
+    let message = 'Dziś jest ${weather}.';
+    console.log(message);
+    }
+messageFunction('pochmurno');
