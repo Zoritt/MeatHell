@@ -1,13 +1,4 @@
-let name = "Adam"
-let myData = {
-    name,
-    weather: "słonecznie",
-    printMessage() {
-        console.log(`Cześć, ${myData.name}!`);
-        console.log(`Dziś jest ${myData.weather}.`);
-    }
-};
-myData.printMessage();
-let secondObject = {};
-Object.assign(secondObject, myData);
-secondObject.printMessage();
+import additionalFunction from "./maths/sum";
+let values = [10,20,30,40,50];
+let total = additionalFunction(values);
+console.log(`Łącznie: ${total}`);
