@@ -8,11 +8,12 @@
       methods: {
           ...mapActions({
             getData: "getData",
+            initializeCart: "cart/initializeCart"
          }) 
       },
       created() {
           this.getData();
+          this.initializeCart(this.$store);
       }
  }
 </script>
-
